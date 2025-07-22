@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "Real-Time Visitor Analytics",
+    "_postman_id": "visitor-analytics-collection",
+    "description": "API collection to test Real-Time Visitor Analytics System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1️⃣ Add Visitor Event (Page View)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"pageview\",\n  \"page\": \"/home\",\n  \"sessionId\": \"visitor-001\",\n  \"timestamp\": \"2025-07-19T10:30:00Z\",\n  \"country\": \"India\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "events"]
+        }
+      }
+    },
+    {
+      "name": "2️⃣ Navigate Visitor to New Page",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"pageview\",\n  \"page\": \"/products\",\n  \"sessionId\": \"visitor-001\",\n  \"timestamp\": \"2025-07-19T10:30:30Z\",\n  \"country\": \"India\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "events"]
+        }
+      }
+    },
+    {
+      "name": "3️⃣ End Visitor Session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"session_end\",\n  \"page\": \"/products\",\n  \"sessionId\": \"visitor-001\",\n  \"timestamp\": \"2025-07-19T10:35:00Z\",\n  \"country\": \"India\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "events"]
+        }
+      }
+    },
+    {
+      "name": "4️⃣ Get Analytics Summary",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/analytics/summary",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "analytics", "summary"]
+        }
+      }
+    },
+    {
+      "name": "5️⃣ Get Active Sessions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/analytics/sessions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "analytics", "sessions"]
+        }
+      }
+    },
+    {
+      "name": "6️⃣ New Visitor (Second User)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"pageview\",\n  \"page\": \"/home\",\n  \"sessionId\": \"visitor-002\",\n  \"timestamp\": \"2025-07-19T10:31:00Z\",\n  \"country\": \"USA\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "events"]
+        }
+      }
+    }
+  ]
+}
